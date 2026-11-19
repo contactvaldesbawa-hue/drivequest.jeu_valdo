@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const mascotSrc = '/manus-storage/async-images/IVTXJ7mi44oAelYzUNIzEw/image-1.webp';
+const mascotSrc = `${import.meta.env.BASE_URL}mascot.webp`;
 
 const chapters = [
   { id: 'signs', number: '01', name: 'Signalisation routière', short: 'Les panneaux et marquages', icon: '△', color: 'teal', goal: 'Lire la route en un coup d’œil' },
