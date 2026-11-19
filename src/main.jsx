@@ -269,7 +269,7 @@ function SignUp({ onComplete }) {
       setError('Tous les champs sont nécessaires pour créer ton profil.');
       return;
     }
-    if (!/^\\S+@\\S+\\.\\S+$/.test(form.email)) {
+    if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
       setError('Vérifie le format de ton adresse e-mail.');
       return;
     }
