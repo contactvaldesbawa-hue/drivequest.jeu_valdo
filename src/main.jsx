@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
 
-const mascotSrc = `${import.meta.env.BASE_URL}mascot.webp`;
+const mascotSrc = `${import.meta.env.BASE_URL}mascot-v2.png`;
 
 const chapters = [
   { id: 'signs', number: '01', name: 'Signalisation routière', short: 'Les panneaux et marquages', icon: '△', color: 'teal', goal: 'Lire la route en un coup d’œil' },
@@ -269,13 +269,13 @@ function SignUp({ onComplete }) {
       setError('Tous les champs sont nécessaires pour créer ton profil.');
       return;
     }
-    if (!/^\S+@\S+\.\S+$/.test(form.email.trim())) {
-      setError('Vérifie le format de ton adresse e-mail.');
+    if (!form.email.trim().includes('@')) {
+      setError('Indique une adresse e-mail avec le symbole @.');
       return;
     }
     onComplete({ ...form, createdAt: new Date().toISOString() });
   }
-  return <div className="signup-shell"><div className="signup-visual"><button className="brand signup-brand" onClick={() => window.location.reload()} aria-label="Recharger DriveQuest"><span className="brand-mark">D<span>Q</span></span><span>Drive<span>Quest</span></span></button><div className="signup-orbit signup-orbit-one" /><div className="signup-orbit signup-orbit-two" /><Mascot mood="excited" /><div className="signup-quote"><span>TON PERMIS.</span><strong>TON AVENTURE.</strong><p>Apprends à ton rythme, progresse à chaque réponse.</p></div></div><div className="signup-panel"><div className="signup-panel-inner"><span className="eyebrow">PREMIÈRE ÉTAPE</span><h1>Créons ton<br /><em>profil pilote.</em></h1><p className="signup-intro">Quelques informations pour personnaliser ton parcours DriveQuest.</p><form onSubmit={submit} className="signup-form"><div className="field-row"><label><span>Prénom</span><input value={form.firstName} onChange={(event) => update('firstName', event.target.value)} placeholder="Ex. Aïcha" autoComplete="given-name" /></label><label><span>Nom</span><input value={form.lastName} onChange={(event) => update('lastName', event.target.value)} placeholder="Ex. Houngbédji" autoComplete="family-name" /></label></div><label><span>Numéro de téléphone</span><input type="tel" value={form.phone} onChange={(event) => update('phone', event.target.value)} placeholder="Ex. +229 97 00 00 00" autoComplete="tel" /></label><label><span>Adresse e-mail</span><input type="email" value={form.email} onChange={(event) => update('email', event.target.value)} placeholder="toi@exemple.com" autoComplete="email" /></label>{error && <p className="signup-error" role="alert">{error}</p>}<button className="primary-btn signup-submit" type="submit">Commencer mon parcours <span>→</span></button></form><p className="privacy-note"><span>i</span> Tes informations sont enregistrées uniquement sur cet appareil dans cette version de démonstration. Aucun compte serveur ni envoi d’e-mail n’est encore activé.</p></div></div></div>;
+  return <div className="signup-shell"><div className="signup-visual"><button className="brand signup-brand" onClick={() => window.location.reload()} aria-label="Recharger DriveQuest"><span className="brand-mark">D<span>Q</span></span><span>Drive<span>Quest</span></span></button><div className="signup-orbit signup-orbit-one" /><div className="signup-orbit signup-orbit-two" /><Mascot mood="excited" /><div className="signup-quote"><span>TON PERMIS.</span><strong>TON AVENTURE.</strong><p>Apprends à ton rythme, progresse à chaque réponse.</p></div></div><div className="signup-panel"><div className="signup-panel-inner"><span className="eyebrow">PREMIÈRE ÉTAPE</span><h1>Créons ton<br /><em>profil pilote.</em></h1><p className="signup-intro">Quelques informations pour personnaliser ton parcours DriveQuest.</p><form onSubmit={submit} className="signup-form"><div className="field-row"><label><span>Prénom</span><input value={form.firstName} onChange={(event) => update('firstName', event.target.value)} placeholder="Ex. Aïcha" autoComplete="given-name" /></label><label><span>Nom</span><input value={form.lastName} onChange={(event) => update('lastName', event.target.value)} placeholder="Ex. Houngbédji" autoComplete="family-name" /></label></div><label><span>Numéro de téléphone</span><input type="tel" value={form.phone} onChange={(event) => update('phone', event.target.value)} placeholder="Ex. +229 97 00 00 00" autoComplete="tel" /></label><label><span>Adresse e-mail</span><input type="text" inputMode="email" value={form.email} onChange={(event) => update('email', event.target.value)} placeholder="toi@exemple.com" autoComplete="email" /></label>{error && <p className="signup-error" role="alert">{error}</p>}<button className="primary-btn signup-submit" type="submit">Commencer mon parcours <span>→</span></button></form><p className="privacy-note"><span>i</span> Tes informations sont enregistrées uniquement sur cet appareil dans cette version de démonstration. Aucun compte serveur ni envoi d’e-mail n’est encore activé.</p></div></div></div>;
 }
 
 function Home({ progress, masteryAverage, reviewQuestions, onChapter, onExam, onReview }) {
